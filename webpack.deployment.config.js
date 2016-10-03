@@ -2,18 +2,23 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  devtool: 'source-map',
+
   entry: [
-    'webpack-hot-middleware/client',
     './app/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'app/assets/'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/app/assets/'
+    publicPath: '/dist/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    })
   ],
   module: {
     loaders: [
