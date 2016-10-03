@@ -1,0 +1,69 @@
+#container {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+.mountain {
+  background-image: url('/app/assets/images/mountain.png');
+  zIndex: 1,
+  position: 'absolute'
+}
+
+.hiker {
+  width: 250px;
+  height: 500px;
+
+}
+
+.mainAvatar {
+  width: 180px;
+  height: 250px;
+}
+
+.skills {
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+
+li {
+  float:left;
+  display:inline;
+  padding: 10px;
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+.chooseAvatar {
+  position: relative;
+  margin: 10px;
+  padding: 15px;
+  border: black 1px solid;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.chooseAvatar .avatar {
+  margin: 10px;
+  width: 120px;
+  height: 170px;
+}
+
+.footer {
+  clear: both;
+  margin: 40px;
+  padding: 10px;
+  font-weight: 700;
+}
