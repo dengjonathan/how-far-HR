@@ -1,5 +1,5 @@
 {
-  "name": "How Far HackReactor",
+  "name": "how_far_hr",
   "version": "1.1.0",
   "engines": {
     "node": "5.12.0"
@@ -9,17 +9,21 @@
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --hot --inline"
+    "start": "node app/server.js",
+    "dev-start": "webpack-dev-server --progress --colors --hot --inline"
   },
   "dependencies": {
     "babel-core": "^6.17.0",
     "bootstrap": "^4.0.0-alpha.2",
+    "express": "^4.14.0",
     "jquery": "^2.2.1",
     "lodash": "^4.6.1",
     "moment": "^2.15.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "webpack-dev-middleware": "^1.8.3",
+    "webpack-hot-middleware": "^2.12.2"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",

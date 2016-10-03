@@ -1,22 +1,16 @@
-'use strict';
+const path = require('path')
+const express = require('express')
 
-let path = require('path');
-let webpack = require('webpack');
-let WebpackDevServer = require('webpack-dev-server');
-let config = require('./webpack.config.js').development;
+module.exports = {
+  app: function () {
+    const app = express()
+    const indexPath = path.join(__dirname, '/../index.html')
+    const publicPath = express.static(path.join(__dirname, '../public'))
 
-let server = new WebpackDevServer(webpack(config), {
-  contentBase: 'src/static/',
-  stats: {
-    // Do not show list of hundreds of files included in a bundle
-    chunkModules: false,
-    colors: true
-  },
-  publicPath: '/assets/',
-  hot: true
-});
+    app.use('/public', publicPath)
+    app.get('/', function (_, res) { res.sendFile(indexPath) })
 
-server.use('/', (req, res) => res.sendFile(path.join(__dirname, '/src/static/index.html')));
+    return app
+  }
+}
 
-server.listen(3000, 'localhost', err =>
-  err ? console.error(err) : console.log('Listening on http://localhost:3000'));
