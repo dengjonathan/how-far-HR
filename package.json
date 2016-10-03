@@ -10,7 +10,8 @@
   "private": false,
   "scripts": {
     "start": "node dist/app.js",
-    "dev-start": "webpack-dev-server --progress --colors --hot --inline"
+    "dev-start": "webpack-dev-server --progress --colors --hot --inline",
+    "build": "webpack --config ./webpack.deployment.config.js --progress --colors"
   },
   "dependencies": {
     "babel-core": "^6.17.0",
