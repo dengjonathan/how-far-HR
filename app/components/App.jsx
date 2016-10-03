@@ -59,7 +59,7 @@ class App extends React.Component {
           />
           <Hiker
             image={path.join(this.props.imagePath , this.state.currentAvatar)}
-            progress={this.state.progress}
+            progress={this.getProgress()}
           />
           </div>
 
@@ -72,7 +72,7 @@ class App extends React.Component {
           </div>
         </div>
         <Skills skills={this.state.concepts} />
-        <div className="footer">
+        <div className="footer row">
           <Footer creator={this.props.creator} />
         </div>
       </div>

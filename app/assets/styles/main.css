@@ -26,10 +26,24 @@
 
 }
 
+.mainAvatar {
+  width: 180px;
+  height: 250px;
+}
+
 .skills {
   margin: 10px;
   padding: 10px;
   position: relative;
+  width: 100%;
+}
+
+li {
+  float:left;
+  display:inline;
+  padding: 10px;
+  margin: 10px;
+  font-size: 1.2em;
 }
 
 .chooseAvatar {
@@ -42,8 +56,14 @@
 }
 
 .chooseAvatar .avatar {
-  height: 200px;
-  width: 180px;
+  margin: 10px;
+  width: 120px;
+  height: 170px;
 }
 
-.footer
+.footer {
+  clear: both;
+  margin: 10px;
+  padding: 10px;
+  font-weight: 700;
+}

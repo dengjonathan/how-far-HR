@@ -1,15 +1,17 @@
 import React from 'react';
 
-const Hiker = ({image, location}) => {
+const Hiker = ({image, progress}) => {
   let style = {
     zIndex: 999,
-    width: '30%',
-    height: '40%',
+    width: '',
     position: 'absolute',
+    top: '10%',
+    left: progress + '%'
+
   };
   return (
     <div className="hiker" style={style}>
-      <img src={image}></img>
+      <img className="mainAvatar" src={image}></img>
     </div>
   );
 };
