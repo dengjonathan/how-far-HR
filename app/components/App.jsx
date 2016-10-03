@@ -1,28 +1,81 @@
+import _ from 'underscore';
+import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// Import sub-components
 import Mountain from './Mountain.jsx';
 import Hiker from './Hiker.jsx';
-import _ from 'underscore';
+import Header from './Header.jsx';
+import Skills from './Skills.jsx';
+import ChooseAvatar from './ChooseAvatar.jsx';
+import Footer from './Footer.jsx';
 
 class App extends React.Component {
 
   constructor (props) {
     super(props);
     _.defaults(this.props, this.defaultProps);
-    console.log(this.props);
-    this.state = {
-      hiker: 'app/assets/images/guy-hiker.png',
-      progress: 0.5
-    }
+    this.state = this.getState();
+  }
+
+  componentDidMount() {
+    console.log('called');
+    this.setState({currentDate: new Date()});
+  }
+
+  getState() {
+    return this.props.store.getState();
+  }
+
+  setStoreState(type, update) {
+    this.props.store.dispatch({type: type, update: update});
+  }
+
+  getProgress() {
+    return Math.floor((this.state.currentDate - this.state.startDate) / (this.state.endDate -this.state.startDate) * 100);
+  }
+
+  changeAvatar(avatar) {
+    this.setState({currentAvatar: avatar});
+  }
+
+  getHikerX() {
+
   }
 
   render() {
-    console.log(this.props.style);
       return (
-        <div>Hello World
-          <Mountain image='app/assets/images/mountain.png' style={this.props.style}/>
-          <Hiker image={this.state.hiker} progress={this.state.progress} />
+        <div className="container">
+          <Header
+            progress={this.state.currentDate ? this.getProgress() : 0}
+            currentDate={this.state.currentDate ? this.state.currentDate : new Date()}
+            endDate={this.state.endDate}
+          />
+        <div className="row">
+          <div className="col-md-9">
+          <Mountain
+            image={path.join(this.props.imagePath , this.props.background)}
+          />
+          <Hiker
+            image={path.join(this.props.imagePath , this.state.currentAvatar)}
+            progress={this.state.progress}
+          />
+          </div>
+
+          <div className="col-md-3">
+          <ChooseAvatar
+            imgPath = {this.props.imagePath}
+            avatars = {this.state.avatars}
+            changeAvatar = {this.changeAvatar.bind(this)}
+          />
+          </div>
         </div>
+        <Skills skills={this.state.concepts} />
+        <div className="footer">
+          <Footer creator={this.props.creator} />
+        </div>
+      </div>
     );
   }
 }
@@ -32,7 +85,10 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  style: {height: '600px', width: '1000px'}
+  style: {height: '600px', width: '1000px'},
+  imagePath: '/app/assets/images',
+  background: 'mountain.png',
+  creator: 'Jon Deng'
 };
 
-ReactDOM.render(<App/>, document.getElementById('container'));
+export default App;

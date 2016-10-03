@@ -1,37 +1,35 @@
 const {createStore} = Redux;
 
-// const counter = (state=0, action) => {
-//   switch(action.type) {
-//     case 'increment':
-//       return state + 1;
-//     case 'decrement':
-//       return state - 1;
-//     default:
-//       return state;
-//   }
-// }
+const initialState = Object.freeze({
+  concepts: ['underscore.js', 'jQuery', 'React.js', 'data structures', 'recursion',
+    'Backbone.js', 'HTML5', 'CSS3', 'Linux command-line', 'D3.js', 'debugger\'s question', 'Chrome DevTools', 'pair programming', 'prototypal inheritance',
+    'whiteboarding', 'AJAX', 'JSONP', 'ES6', 'MV* frameworks', 'complexity analysis',
+    'apply, call, bind', 'the this keyword', 'closures'
+  ],
+  avatars: ['guy-hiker.png', 'girl-hiker.png'],
+  currentAvatar: 'guy-hiker.png',
+  startDate: new Date(2016, 8, 12),
+  endDate: new Date(2016, 11, 10),
+  currentDate: null
+});
 
-// const store = createStore(counter);
+const reducer = (state=initialState, action) => {
+  let copy = Object.assign({}, state);
+  switch(action.type) {
+    case 'updateDate':
+      copy.currentDate = action.update;
+      return copy;
+    case 'updateProgress':
+      state.progress = (new Date() - startDate) / (endDate - startDate)
+      return state;
+    case 'addConceptLearned':
+      return state - 1;
+    case 'updateAvatar':
+    default:
+      return state;
+  }
+};
 
-// const Counter = ({
-//   value,
-//   onIncrement,
-//   onDecrement
-// }) => {
-//   return (
-//   <div>
-//     <h1> {value} </h1>
-//     <button onClick={onIncrement}>+</button>
-//     <button onClick={onDecrement}>-</button>
-//   </div>
-// )};
+const store = createStore(reducer);
 
-// const render = () => {ReactDom.render( <Counter
-//   value={store.getState()}
-//   onIncrement={()=> store.dispatch({type: 'increment'})}
-//   onDecrement={() => store.dispatch({type: 'decement'})}
-//   />, document.getElementById('app'));
-// };
-
-// store.subscribe(render);
-// render();
+export default store;
