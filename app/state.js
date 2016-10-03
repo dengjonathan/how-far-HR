@@ -1,4 +1,4 @@
-const {createStore} = Redux;
+import {createStore} from 'redux';
 
 const initialState = Object.freeze({
   concepts: ['underscore.js', 'jQuery', 'React.js', 'data structures', 'recursion',

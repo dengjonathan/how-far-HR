@@ -20,7 +20,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('called');
     this.setState({currentDate: new Date()});
   }
 
@@ -86,7 +85,7 @@ App.propTypes = {
 
 App.defaultProps = {
   style: {height: '600px', width: '1000px'},
-  imagePath: '/app/assets/images',
+  imagePath: '/dist/assets/images',
   background: 'mountain.png',
   creator: 'Jon Deng'
 };

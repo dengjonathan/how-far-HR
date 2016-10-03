@@ -6,7 +6,7 @@ const Mountain = ({image}) => {
     height: '50%',
     zIndex: 1,
     backgroundRepeat: 'no-repeat',
-    // float: 'left'
+    backgroundImage: `url('${image}')`
   };
   return (
     <div className="mountain" style={style}>
